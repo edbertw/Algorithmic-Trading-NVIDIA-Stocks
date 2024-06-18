@@ -39,3 +39,5 @@ Predictions (Current Date is June 18 2024)
 2024-07-29  151.865843
 ```
 ![Algo Trading Results](https://drive.google.com/file/d/1em0aqXWLskhD6ApXJcrpgDpvkPBDgzim/view?usp=sharing)
+## Conclusion
+While the autoTS function was able to find the most accurate model based on a set of fixed metrics, theoretically, the predicted prices should be quite accurate. However, taking into account the highly volatile nature of the stock market, which movements are determined by many external dynamics and factors, one model can never be too precise. Hence, there are still lots of room for improvements in predictions involving the stock market.
