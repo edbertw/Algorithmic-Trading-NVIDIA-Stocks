@@ -30,9 +30,8 @@ plt.ylabel('Closing Prices')
 plt.xticks(rotation = 45)
 plt.title("Time Series Plot of Closing Prices")
 
-model = AutoTS(forecast_length = 30, #Forecast until end of July 2024
-               model_list = ['ARIMA',
-                             'Prophet'],
+model = AutoTS(forecast_length = 35, #Forecast until end of July 2024
+               model_list = ['Prophet'],
                frequency = 'infer',
                ensemble = 'simple')
 model = model.fit(stock, date_col = 'Date', value_col = 'Close', id_col = None)
@@ -44,7 +43,7 @@ predictions = predictions.reset_index()
 predictions = predictions.rename(columns = {'index': 'Date'})
 predictions.head()
 
-preds = predictions.iloc[:,2:4]
+preds = predictions.copy()
 preds.head()
 stock['momentum'] = stock['Close'].pct_change()
 preds['momentum'] = preds['Close'].pct_change()
