@@ -18,6 +18,7 @@ stock['Date'] = stock.index
 select_cols = ["Date","Open","High","Low","Close","Adj Close","Volume"]
 stock = stock[select_cols]
 stock.reset_index(drop = True, inplace = True)
+print(stock.head())
 print(stock.tail())
 
 stock = stock[["Date","Close"]]
@@ -49,6 +50,14 @@ stock['momentum'] = stock['Close'].pct_change()
 preds['momentum'] = preds['Close'].pct_change()
 full_vals = pd.concat([stock,preds], ignore_index = True)
 
+full_vals['MA10'] = full_vals['Close'].rolling(window = 10).mean()
+full_vals['MA20'] = full_vals['Close'].rolling(window = 20).mean()
+full_vals['Signal'] = 0
+full_vals['Signal'][10:] = full_vals['MA10'][10:] > full_vals['MA20'][10:]
+full_vals['Pos'] = full_vals['Signal'].diff()
+full_vals.head()
+
+# Momentum Strategy
 fig = make_subplots(rows = 2, cols = 1)
 fig.add_trace(go.Scatter(x = full_vals.Date,
                         y = full_vals.Close,
@@ -73,3 +82,19 @@ fig.update_layout(title = 'NVIDIA Predicted Stocks',
                  yaxis2_title = "Momentum")
 fig.update_yaxes(secondary_y = True)
 fig.show()
+
+# Moving Average Strategy
+plt.figure(figsize = (12,8))
+plt.plot(full_vals.Date, full_vals.Close, label = "Closing Price")
+plt.plot(full_vals.Date, full_vals.MA10, label = "10 day MA")
+plt.plot(full_vals.Date, full_vals.MA20, label = "20 day MA")
+
+# Add BUY/SELL SIGNALS
+plt.plot(full_vals[full_vals['Pos'] == 1].Date, full_vals['MA10'][full_vals['Pos'] == 1], '^', markersize = 10, color ='g', label = 'BUY')
+plt.plot(full_vals[full_vals['Pos'] == -1].Date, full_vals['MA10'][full_vals['Pos'] == -1], 'v', markersize = 10, color = 'r', label = "SELL")
+
+plt.xlabel("Date")
+plt.ylabel("Close")
+plt.title("SMA Strategy for NVIDIA Stock Prices")
+plt.legend()
+plt.show()
