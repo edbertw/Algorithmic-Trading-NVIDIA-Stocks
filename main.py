@@ -98,3 +98,9 @@ plt.ylabel("Close")
 plt.title("SMA Strategy for NVIDIA Stock Prices")
 plt.legend()
 plt.show()
+
+#SMA STRATEGY ACCURACY
+full_vals["Returns"] = full_vals["momentum"]
+full_vals["StratReturns"] = full_vals["Returns"] * full_vals["Pos"].shift(1)
+SMA_accuracy = (full_vals["Pos"].diff() == full_vals['Returns'].shift(-1)).mean()
+print(SMA_accuracy)
