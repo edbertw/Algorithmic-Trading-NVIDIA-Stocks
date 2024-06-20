@@ -3,7 +3,7 @@
 This time series project aims to utilize machine learning algorithms to predict real-time NVIDIA stocks 35 days from now (Until Early August 2024). I implemented the powerful autoTS time series library limited to the FBProphet model to accurately predict future stock prices. Furthermore, I conducted an analysis of past, current and future stock closing prices to construct a "Momentum" and "Moving Average" Strategy for Algorithmic Trading.
 ## Dataset
 I utilized the yfinance API to gather real time data of Date, Opening Price, Closing Price, Volume of NVIDIA stocks traded in the past 1 year. Since there are no missing values in all columns, there is no need to do validation for missing data
-# Results
+## Results
 Predictions (Current Date is June 18 2024)
 ```
                  Close
@@ -43,6 +43,6 @@ Predictions (Current Date is June 18 2024)
 2024-08-02  154.917464
 2024-08-05  155.962418
 ```
-![Algo Trading Results](https://drive.google.com/file/d/1em0aqXWLskhD6ApXJcrpgDpvkPBDgzim/view?usp=sharing)
+Simple Moving Average Strategy Accuracy = ``` 0.0034965034965034965 / 0.35% ``` (Extremely Low!)
 ## Conclusion
-While the autoTS function was able to find the most accurate model based on a set of fixed metrics, theoretically, the predicted prices should be quite accurate. However, taking into account the highly volatile nature of the stock market, which movements are determined by many external dynamics and factors, one model can never be too precise. Hence, there are still lots of room for improvements in predictions involving the stock market.
+While the autoTS function was able to find the most accurate model based on a set of fixed metrics, theoretically, the predicted prices should be quite accurate. However, taking into account the highly volatile nature of the stock market, which movements are determined by many external dynamics and factors, one model can never be too precise. Hence, there are still lots of room for improvements in predictions involving the stock market. As indicated by the low performance of the SMA strategy, we would require more complex and precise strategies for larger accuracies.
