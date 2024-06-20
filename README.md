@@ -1,6 +1,6 @@
 # Predicting Future NVIDIA Stock Prices and Making Trading Decisions
 ## Overview
-This time series project aims to utilize machine learning algorithms to predict real-time NVIDIA stocks 35 days from now (Until Early August 2024). I implemented the powerful autoTS time series library limited to the FBProphet model to accurately predict future stock prices. Furthermore, I conducted an analysis of past, current and future stock closing prices to construct a "Momentum" and "Moving Average" Strategy for Algorithmic Trading.
+This time series project aims to utilize machine learning algorithms to predict real-time NVIDIA stocks 35 days from now (Until Early August 2024). I implemented the powerful autoTS time series library limited to the Prophet by Facebook ML model to accurately predict future stock prices. Furthermore, I conducted an analysis of past, current and future stock closing prices to construct a "Momentum" and "Moving Average" Strategy for Algorithmic Trading Decisions.
 ## Dataset
 I utilized the yfinance API to gather real time data of Date, Opening Price, Closing Price, Volume of NVIDIA stocks traded in the past 1 year. Since there are no missing values in all columns, there is no need to do validation for missing data
 ## Results
