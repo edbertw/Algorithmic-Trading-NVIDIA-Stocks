@@ -32,7 +32,7 @@ plt.xticks(rotation = 45)
 plt.title("Time Series Plot of Closing Prices")
 
 model = AutoTS(forecast_length = 35, #Forecast until end of July 2024
-               model_list = ['Prophet'],
+               model_list = ['Prophet', 'ARIMA'],
                frequency = 'infer',
                ensemble = 'simple')
 model = model.fit(stock, date_col = 'Date', value_col = 'Close', id_col = None)
